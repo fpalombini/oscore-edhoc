@@ -2,3 +2,7 @@
 *.txt
 *.html
 /lib/*
+.circleci/*
+.github/*
+.targets.mk
+Makefile
