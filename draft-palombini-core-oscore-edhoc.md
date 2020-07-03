@@ -221,7 +221,6 @@ The Client would be able to distinguish based on the number of CBOR elements in 
 
 TODO Security
 
-
 # IANA Considerations
 
 This document has no IANA actions.
