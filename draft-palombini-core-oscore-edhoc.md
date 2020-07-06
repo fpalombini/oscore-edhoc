@@ -26,6 +26,7 @@ normative:
   RFC8613:
   I-D.selander-lake-edhoc:
   I-D.ietf-cbor-7049bis:
+  I-D.ietf-lake-reqs:
 
 informative:
 
@@ -39,9 +40,14 @@ TODO Abstract
 
 # Introduction
 
-This document presents possible options to combine the EDHOC protocol {{I-D.selander-lake-edhoc}}, run over CoAP {{RFC7252}}, with the first subsequent OSCORE {{RFC8613}} transaction.
-This allows to minimize the number of roundtrips necessary to setup the OSCORE security material.
-The goal of this specification is to gather opinions on each option, and develop only one of these options.
+This document presents possible optimization options to combine the EDHOC protocol {{I-D.selander-lake-edhoc}}, run over CoAP {{RFC7252}}, with the first subsequent OSCORE {{RFC8613}} transaction. 
+This allows for a minimum number of round trips necessary to setup the OSCORE security context and complete an OSCORE transaction, for example when an IoT device gets configured in a network for the first time.
+
+The number of round trips for a protocol implies a minimum for the number of flights, which can have a substantial impact on performance with certain radio technologies as discussed in Section 2.11 of {{I-D.ietf-lake-reqs}}. 
+Without this optimization it is not possible even in theory to obtain the minimum number of flights. 
+With this optimization it is possible also in practice since the last message of the EDHOC protocol can be made relatively small (see Section 1 of {{I-D.selander-lake-edhoc}}) and allows additional OSCORE protected CoAP data within target MTU sizes {{I-D.ietf-lake-reqs}}.
+
+The goal of this draft is to gather opinions on each option, and develop only one of these options.
 
 ## Terminology
 
